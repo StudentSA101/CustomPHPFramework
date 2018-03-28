@@ -4,13 +4,13 @@ return [
 
 	'database' => [
 
-		'name' => 'dotsure_test',
+		'name' => 'heroku_ed17a10109074a2',
 
-		'username' => 'root',
+		'username' => 'bc24c8c16f0a60',
 
-		'password' => 'root',
+		'password' => '608922d4',
 
-		'connection' => 'mysql:host=127.0.0.1',
+		'connection' => 'mysql:host=us-cdbr-iron-east-05.cleardb.net',
 
 		'options' =>[
 

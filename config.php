@@ -1,16 +1,16 @@
 <?php
-
+// Enter database configurations here 
 return [
 
 	'database' => [
 
-		'name' => 'heroku_ed17a10109074a2',
+		'name' => '',
 
-		'username' => 'bc24c8c16f0a60',
+		'username' => '',
 
-		'password' => '608922d4',
+		'password' => '',
 
-		'connection' => 'mysql:host=us-cdbr-iron-east-05.cleardb.net',
+		'connection' => '',
 
 		'options' =>[
 

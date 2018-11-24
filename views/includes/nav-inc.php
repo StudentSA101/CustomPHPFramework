@@ -12,23 +12,23 @@
 </head>
 	<body>
 		<nav class ="navbar navbar-expand-sm navbar-light bg-light">
-			  <img src="/assets/images/logo.svg" alt="Business Logo" class="img-thumbnail"> 
+			  <img alt="Business Logo" class="img-thumbnail"> 
 		    <button class="navbar-toggler " data-toggle="collapse" data-target="#navbarMenu">
 		        <span class="navbar-toggler-icon"></span>
 		    </button>
 
-		      	<div class ="collapse navbar-collapse" id="navbarMenu">
-		         <ul class="navbar-nav ml-auto">
-		          <li class="nav-item">
-		            <a class="nav-link" href="/">User List
-		            </a>
-		          </li>
-		          <li class="nav-item">
-		            <a class="nav-link" href="/create">Add User
-		            </a>
-		          </li>        
-		          </ul>
-		        </div>	        
+				<div class ="collapse navbar-collapse" id="navbarMenu">
+					<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">User List
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/create">Add User
+						</a>
+					</li>        
+					</ul>
+				</div>	        
 		</nav>
-	    <div class = "container mt-4">
-	    <div class = "row">
+		<div class ="container mt-4">
+		<div class ="row">

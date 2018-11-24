@@ -26,6 +26,7 @@
 	  </div>
 	  <button type="submit" id="button" class ="btn btn-success btn-lg float-right rounded col-3">Submit</button>
 	</form>
+	
 	<?php endforeach?>
 
 	<?php if($update === TRUE) :?>

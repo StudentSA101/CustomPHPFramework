@@ -1,5 +1,5 @@
 <?php
-require_once 'vendor/autoload.php';
+
 error_reporting(E_ALL); ini_set('display_errors', 1);
 // require our database connection and query builder file that acts as our model. 
 $query = require 'core/bootstrap.php';

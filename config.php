@@ -4,13 +4,13 @@ return [
 
 	'database' => [
 
-		'name' => '',
+		'name' => 'heroku_ed17a10109074a2',
 
-		'username' => '',
+		'username' => 'bc24c8c16f0a60',
 
-		'password' => '',
+		'password' => '608922d4',
 
-		'connection' => '',
+		'connection' => 'mysql:host=us-cdbr-iron-east-05.cleardb.net',
 
 		'options' =>[
 

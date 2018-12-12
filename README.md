@@ -21,10 +21,12 @@ Copy whole file and point server to index.html
 ### Todos
 
  - Extend the framework by adding security features such as csfr tokens and xsrf
- - remove ajax and jquery and add vue.js 
- - further abstract the framework by creating static containers
- - further research to extend the project
- - update page after ajax call. 
+ - Make provision for SQL injection.
+ - Create auth middleware for authentication.
+ - add a templating engine.
+ - add a build system such as webpack.
+ - further abstract the framework by creating static containers.
+ - further research to extend the project.
 
    [PHP]: <http://php.net/manual/en/tutorial.php>
    [HTML]: <https://developer.mozilla.org/kab/docs/Web/HTML>

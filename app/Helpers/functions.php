@@ -1,5 +1,7 @@
 <?php 
 
+namespace App\Helpers;
+
 function view($name, $data = []) 
 {
     extract($data);

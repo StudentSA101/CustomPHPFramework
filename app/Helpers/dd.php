@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Helpers;
+
 function d($data)
 {
     if (is_null($data)) {

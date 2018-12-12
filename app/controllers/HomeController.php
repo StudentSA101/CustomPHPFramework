@@ -4,15 +4,17 @@ namespace App\controllers;
 
 use App\core\Container;
 
+use App\Helpers\Helpers;
+
 class HomeController 
 {
     public function index()
     {
-        return view('home');
+        return Helpers::view('home');
     }
 
     public function fourOhFour()
     {
-        return view('404');
+        return Helpers::view('404');
     }
 }

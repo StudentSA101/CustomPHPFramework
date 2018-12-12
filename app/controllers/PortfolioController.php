@@ -2,10 +2,12 @@
 
 namespace App\controllers;
 
+use App\Helpers\Helpers;
+
 class PortfolioController 
 {
     public function index()
     {
-        return view('portfolio');
+        return Helpers::view('portfolio');
     }
 }

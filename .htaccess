@@ -1,7 +1,8 @@
+<IfModule mod_rewrite.c>
 RewriteEngine on
-RewriteBase /
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-RewriteRule ^(.*)$ app/public/index.php
+RewriteRule .* index.php?/$1 [PT,L]
+</IfModule>
+php_value upload_max_filesize 100M
+php_value post_max_size 100M

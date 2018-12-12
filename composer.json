@@ -12,6 +12,6 @@
         "fxp/composer-asset-plugin": "*"
     },
     "config": {
-        "vendor-dir": "./../vendor"
+        "vendor-dir": "../vendor"
     }
 }

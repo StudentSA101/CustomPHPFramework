@@ -2,8 +2,7 @@
 
 Features!
 
-  - Can add new users on a page
-  - Can delete users from a list
+  - Basic Navigation on example site
 
 ### Tech
 
@@ -16,7 +15,7 @@ So far the Custom PHP Framework uses the following to work properly:
 
 ### Installation
 
-Copy whole file and point server to index.html
+Copy whole file and point server to index.php
 
 ### Todos
 

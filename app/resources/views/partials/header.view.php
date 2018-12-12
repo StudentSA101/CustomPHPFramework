@@ -22,9 +22,9 @@
         <h3 class="masthead-brand">Custom-Framework</h3>
         <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link active" href="/">Home</a>
-            <a class="nav-link" href="/portfolio">Portfolio</a>
-            <a class="nav-link" href="/contact">Contact</a>
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="https://lit-plains-51784.herokuapp.com/portfolio">Portfolio</a>
+            <a class="nav-link" href="https://lit-plains-51784.herokuapp.com/contact">Contact</a>
+            <a class="nav-link" href="https://lit-plains-51784.herokuapp.com/about">About</a>
         </nav>
         </div>
     </header>

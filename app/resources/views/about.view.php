@@ -4,7 +4,7 @@
             <h1 class="cover-heading">About</h1>
             <p class="lead">This is the about page</p>
             <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+            <a href="/" class="btn btn-lg btn-secondary">Learn more</a>
             </p>
         </main>
     </div>

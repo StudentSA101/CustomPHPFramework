@@ -2,11 +2,7 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/"
-        },
-        "files": [
-            "App/Helpers/dd.php",
-            "App/Helpers/functions.php"
-        ]
+        }
     },
     "require": {
         "fxp/composer-asset-plugin": "*"

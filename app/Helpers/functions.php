@@ -2,14 +2,18 @@
 
 namespace App\Helpers;
 
-function view($name, $data = []) 
-{
-    extract($data);
+class Helpers {
 
-    return require '../resources/views/'.$name.'.view.php';
+    public static function view($name, $data = []) 
+    {
+        extract($data);
+    
+        return require '../resources/views/'.$name.'.view.php';
+    }
+    
+    public static function redirect($path) 
+    {
+        header("Location: /{$path}");
+    }
 }
 
-function redirect($path) 
-{
-    header("Location: /{$path}");
-}

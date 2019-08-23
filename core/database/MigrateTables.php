@@ -1,32 +1,36 @@
 <?php
- 
+
 /**
  * SQLite Create Table Demo
  */
-class MigrateTables 
+class MigrateTables
 {
- 
+
     /**
-     * PDO object
-     * @var \PDO
+     * Variableto house PDO class
+     *
+     * @var $database
      */
-    private $pdo;
- 
+    private $database;
+
     /**
-     * connect to the database
+     * Dependency injection of particular database.
+     *
      */
-    public function __construct($pdo) 
+    public function __construct($database)
     {
-        $this->pdo = $pdo;
+        $this->database = $database;
     }
- 
+
     /**
-     * create tables 
+     * create tables
+     *
+     * @return void
      */
-    public function createTables() 
+    public function createTables()
     {
         /**
-         * Setup SQL
+         * Setup the Database, prepared statements are excluded.  File to act as a migration only.
          */
         $commands = [
             'CREATE TABLE IF NOT EXISTS projects (
@@ -41,15 +45,15 @@ class MigrateTables
                 completed_date TEXT,
                 project_id VARCHAR (255),
                 FOREIGN KEY (project_id)
-                REFERENCES projects(project_id) 
+                REFERENCES projects(project_id)
                 ON UPDATE CASCADE
-                ON DELETE CASCADE)'
+                ON DELETE CASCADE)',
         ];
         /**
          * Executes command to create new table
          */
         foreach ($commands as $command) {
-            $this->pdo->exec($command);
+            $this->database->exec($command);
         }
-    } 
+    }
 }

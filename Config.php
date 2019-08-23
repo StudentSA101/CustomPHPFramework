@@ -1,8 +1,7 @@
 <?php
  
-namespace App;
- 
 class Config {
+
    /**
     * Database configuration
     */
@@ -17,8 +16,12 @@ class Config {
         ];
     }
 
+   /**
+    * Database configuration
+    */
+    
     public static function sqlite() : String
     {
-        return 'sqlite:db/phpsqlite.db';
+        return "sqlite:".__DIR__."/db/database.sqlite";
     }
 }

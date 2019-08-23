@@ -1,7 +1,5 @@
 <?php
 
-namespace App\core;
-
 class Container
 {
     protected static $registry = [];

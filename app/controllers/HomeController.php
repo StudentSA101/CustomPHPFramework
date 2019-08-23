@@ -2,7 +2,7 @@
 
 namespace App\controllers;
 
-use App\core\Container;
+use Container;
 
 use App\Helpers\Helpers;
 
@@ -10,6 +10,13 @@ class HomeController
 {
     public function index()
     {
+        
+        $statement = Container::get('pdo')->prepare('select * from projects');
+
+        $statement->execute();
+
+        var_dump($statement->fetchAll());
+
         return Helpers::view('home');
     }
 

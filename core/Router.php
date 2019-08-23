@@ -1,9 +1,5 @@
 <?php
 
-namespace App\core;
-
-use App\controllers;
-
 class Router
 {
     public $routes = [
@@ -17,7 +13,7 @@ class Router
     {
         $router = new static;
         
-        require './../routes.php';
+        require __DIR__.'./../routes/web.php';
        
         return $router;
     }

@@ -1,8 +1,4 @@
 <?php
-
-namespace App\core\database;
-
-use App\Config;
  
 /**
  * Database Connection
@@ -29,8 +25,8 @@ class Connection
     public function connect() 
     {
         try {
-            $this->pdo = new \PDO($this->database);
-         } catch (\PDOException $e) {
+            $this->pdo = new PDO($this->database);
+         } catch (PDOException $e) {
             // handle the exception here
          }
         return $this->pdo;

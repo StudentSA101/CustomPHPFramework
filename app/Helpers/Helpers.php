@@ -8,7 +8,7 @@ class Helpers {
     {
         extract($data);
     
-        return require '../resources/views/'.$name.'.view.php';
+        return require __DIR__.'./../resources/views/'.$name.'.view.php';
     }
     
     public static function redirect($path) 

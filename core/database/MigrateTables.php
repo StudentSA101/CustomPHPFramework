@@ -1,7 +1,5 @@
 <?php
  
-namespace App\core\database;
- 
 /**
  * SQLite Create Table Demo
  */

@@ -2,29 +2,31 @@
 
 namespace App\Commands;
 
+use App\Contracts\GetFileContentsInterface;
 use App\Contracts\HandleCommandDataInterface;
 
 class AutomatedCommand
 {
 
     private $handle;
+    private $file;
 
-    public function __construct(HandleCommandDataInterface $handle)
+    public function __construct(HandleCommandDataInterface $handle, GetFileContentsInterface $file)
     {
         $this->handle = $handle;
+        $this->file = $file;
     }
 
     public function run(bool $test = false)
     {
+
         if (count($_SERVER["argv"]) > 2) {
             throw new \Exception('Sorry, please enter only one input file');
         }
-        $file = file_get_contents(
-            "/" . trim(__DIR__, 'app/Commands') . "/storage/" . $_SERVER["argv"][1]);
-        $data = preg_split('/\n/', $file);
 
+        foreach ($this->file->get() as $parameter) {
+            print_r($handle->determine($parameter[0], $parameter[1]));
         }
-        print_r($data);
 
         if (!$test) {
             print_r(trim("There are " . $_SERVER["argc"] . " arguments"));

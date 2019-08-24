@@ -5,16 +5,9 @@ namespace App\Repository;
 class HandleInput implements HandleCommandDataInterface
 {
 
-    private $handler = [
-        'create_parking_lot',
-    ];
-
-    public function determine(array $data): string
+    public function determine(string $function, array $input = []): string
     {
-        foreach ($data as $value) {
-            $explode = explode($value);
-            call_user_func_array($explode[0], $explode[1]);
-        }
+        call_user_func_array($function, $input);
     }
 
     private function create_parking_lot()

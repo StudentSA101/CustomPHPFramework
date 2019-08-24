@@ -4,6 +4,5 @@ namespace App\Contracts;
 
 interface HandleCommandDataInterface
 {
-    public function determine(array $function): string;
-
+    public function determine(string $function, array $input = []): string;
 }

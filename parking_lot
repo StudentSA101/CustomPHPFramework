@@ -1,8 +1,22 @@
 #!/usr/bin/php
 <?php
 
-if (count($_SERVER["argv"]) > 1) {
-    return require __dir__ . '/app/Commands/InteractiveCommand.php';
+final class ParkingLot
+{
+
+    public function run()
+    {
+        $output = shell_exec('vendor/bin/phpunit tests/*');
+        echo "<pre>$output</pre>";
+
+        if (count($_SERVER["argv"]) > 1) {
+            return require __dir__ . '/app/Commands/InteractiveCommand.php';
+        }
+
+        return require __dir__ . '/app/Commands/AutomatedCommand.php';
+
+    }
+
 }
 
-return require __dir__ . '/app/Commands/AutomatedCommand.php';
+(new ParkingLot)->run();

@@ -3,14 +3,19 @@ declare (strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
 
-final class InteractiveCommandTest extends TestCase
+$private 
+
+final class AutomatedCommandTest extends TestCase
 {
+
+    public function setUp()
+    {
+        $this->testsub = new TestSubject();
+    }
+
     public function testExample1(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+        
     }
 
     public function testExample2(): void

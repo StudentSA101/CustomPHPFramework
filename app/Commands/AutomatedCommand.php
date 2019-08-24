@@ -2,4 +2,11 @@
 
 namespace App\commands;
 
-echo 'automated command has been opened';
+final class AutomatedCommand
+{
+    public function run()
+    {
+        echo 'automated command has been opened';
+
+    }
+}

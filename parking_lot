@@ -2,7 +2,7 @@
 <?php
 
 if (count($_SERVER["argv"]) > 1) {
-    return require __dir__ . '/app/commands/InteractiveCommand.php';
+    return require __dir__ . '/app/Commands/InteractiveCommand.php';
 }
 
-return require __dir__ . '/app/commands/AutomatedCommand.php';
+return require __dir__ . '/app/Commands/AutomatedCommand.php';

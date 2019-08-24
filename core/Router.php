@@ -6,15 +6,15 @@ class Router
         'POST' => [],
         'GET' => [],
         'PUT' => [],
-        'DEL' => []
+        'DEL' => [],
     ];
 
     public static function load($file)
     {
         $router = new static;
-        
-        require __DIR__.'./../routes/web.php';
-       
+
+        require __DIR__ . './../routes/web.php';
+
         return $router;
     }
 
@@ -40,7 +40,7 @@ class Router
 
     public function direct($uri, $requestType)
     {
-        if (array_key_exists($uri,$this->routes[$requestType])) {
+        if (array_key_exists($uri, $this->routes[$requestType])) {
             return $this->callAction(
                 ...explode('@', $this->routes[$requestType][$uri])
             );
@@ -51,18 +51,18 @@ class Router
 
     }
 
-    protected function callAction($controller, $action) 
+    protected function callAction($controller, $action)
     {
-        
-        $controller = 'App\\controllers\\'.$controller;
+
+        $controller = 'App\\Controllers\\' . $controller;
         $controller = new $controller;
 
-        if (! method_exists($controller, $action)) {
+        if (!method_exists($controller, $action)) {
             throw new Exception(
                 '{controller} does not responsed to the {$action} action'
             );
         }
 
         return $controller->$action();
-    } 
+    }
 }

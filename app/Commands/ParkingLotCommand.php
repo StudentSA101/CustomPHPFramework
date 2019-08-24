@@ -4,6 +4,8 @@ namespace App\Commands;
 
 use App\Commands\AutomatedCommand;
 use App\Commands\InteractiveCommand;
+use App\Repository\GetFileContent;
+use App\Repository\HandleInput;
 
 class ParkingLotCommand
 {
@@ -13,9 +15,9 @@ class ParkingLotCommand
         $output = shell_exec('vendor/bin/phpunit tests/*');
 
         if (count($_SERVER["argv"]) > 1) {
-            print_r((new AutomatedCommand())->run());
+            (new AutomatedCommand(new HandleInput, new GetFileContent))->run();
         } else {
-            print_r((new InteractiveCommand())->run());
+            (new InteractiveCommand(new HandleInput))->run();
         }
 
     }

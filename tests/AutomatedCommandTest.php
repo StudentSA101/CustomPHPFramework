@@ -1,9 +1,9 @@
 <?php
-declare(strict_types=1);
+declare (strict_types = 1);
 
 use PHPUnit\Framework\TestCase;
 
-final class EmailTest extends TestCase
+final class InteractiveCommandTest extends TestCase
 {
     public function testExample1(): void
     {
@@ -45,7 +45,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testPower_of_2 (): void
+    public function testPower_of_2(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -53,23 +53,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testSimple1 (): void
-    {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
-    }   
-
-    public function testSimple2 (): void
-    {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
-    }     
-
-    public function testSimple3 (): void
+    public function testSimple1(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -77,7 +61,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testMedium1 (): void
+    public function testSimple2(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -85,7 +69,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testMedium2 (): void
+    public function testSimple3(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -93,7 +77,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testMedium3 (): void
+    public function testMedium1(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -101,7 +85,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testLarge1 (): void
+    public function testMedium2(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -109,7 +93,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testLarge2 (): void
+    public function testMedium3(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -117,7 +101,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testLarge3 (): void
+    public function testLarge1(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -125,7 +109,7 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testLarge4 (): void
+    public function testLarge2(): void
     {
         $this->assertInstanceOf(
             Email::class,
@@ -133,7 +117,23 @@ final class EmailTest extends TestCase
         );
     }
 
-    public function testLarge5 (): void
+    public function testLarge3(): void
+    {
+        $this->assertInstanceOf(
+            Email::class,
+            Email::fromString('user@example.com')
+        );
+    }
+
+    public function testLarge4(): void
+    {
+        $this->assertInstanceOf(
+            Email::class,
+            Email::fromString('user@example.com')
+        );
+    }
+
+    public function testLarge5(): void
     {
         $this->assertInstanceOf(
             Email::class,

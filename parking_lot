@@ -1,8 +1,8 @@
 #!/usr/bin/php
 <?php
 
-if (count($_SERVER["argv"]) > 1 ) {
-    return require __dir__.'/app/commands/interactiveCommand.php';
+if (count($_SERVER["argv"]) > 1) {
+    return require __dir__ . '/app/commands/InteractiveCommand.php';
 }
 
-return require __dir__.'/app/commands/automatedCommand.php';
+return require __dir__ . '/app/commands/AutomatedCommand.php';

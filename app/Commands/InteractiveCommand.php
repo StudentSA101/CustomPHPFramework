@@ -6,7 +6,7 @@ $parkingLot = fread(STDIN, 80);
 
 $parkingLot = trim($site);
 
-if (count($parkingLot) > 0) {
+if (count($parkingLot) > 0 && ctype_digit($parkingLot)) {
 
     echo "Are you sure that one is your favorite?n";
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\commands;
+namespace App\Commands;
 
-final class AutomatedCommand
+class AutomatedCommand
 {
     public function run(bool $test = false)
     {

@@ -1,26 +1,8 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 <?php
 
-use App\Commands\AutomatedCommand;
-use App\Commands\InteractiveCommand;
+require __DIR__ . '/vendor/autoload.php';
 
-final class ParkingLot
-{
+use App\Commands\ParkingLotCommand;
 
-    public function run()
-    {
-        $output = shell_exec('vendor/bin/phpunit tests/*');
-
-        print_r($_SERVER["argv"]);
-
-        if (count($_SERVER["argv"]) > 1) {
-            return (new InteractiveCommand())->run();
-        }
-
-        return (new AutomatedCommand())->run();
-
-    }
-
-}
-
-(new ParkingLot)->run();
+(new ParkingLotCommand())->run();

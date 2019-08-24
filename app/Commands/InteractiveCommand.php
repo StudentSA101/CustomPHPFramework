@@ -1,11 +1,11 @@
 <?php
 
-namespace App\commands;
+namespace App\Commands;
 
-final class AutomatedCommand
+class InteractiveCommand
 {
 
-    public function run()
+    public function run(): void
     {
         echo "Welcome, how many parking lots do you have?";
 

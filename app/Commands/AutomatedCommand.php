@@ -2,8 +2,18 @@
 
 namespace App\Commands;
 
+use App\Contracts\HandleCommandDataInterface;
+
 class AutomatedCommand
 {
+
+    private $handle;
+
+    public function __construct(HandleCommandDataInterface $handle)
+    {
+        $this->handle = $handle;
+    }
+
     public function run(bool $test = false)
     {
         if (count($_SERVER["argv"]) > 2) {

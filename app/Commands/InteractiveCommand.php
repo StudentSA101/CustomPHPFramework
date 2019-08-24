@@ -16,18 +16,17 @@ class InteractiveCommand
     public function run(): void
     {
         echo "Welcome, how many parking lots do you have? ";
-        $input = fread(STDIN, 80);
+        $input = lcfirst(trim(preg_replace('/\n/', '', fread(STDIN, 80))));
         $parameters = explode($input, '');
-        var_dump($input, $parameters);
-        while (trim($input) !== 'Exit' && trim($input !== 'exit')) {
+        while ($input !== 'exit') {
             if (count($parameters) === 1) {
-                print_r($this->handle::determine($input));
+                print_r($this->handle->determine($input));
             } else {
-                print_r($this->handle::determine($parameters[0], $parameters[1]));
+                print_r($this->handle->determine($parameters[0], $parameters[1]));
             }
-            $input = fread(STDIN, 80);
+            $input = lcfirst(trim(preg_replace('/\n/', '', fread(STDIN, 80))));
         }
-        echo "The Command Shell has been terminated";
+        echo "The Command Shell has been terminated ";
     }
 
 }

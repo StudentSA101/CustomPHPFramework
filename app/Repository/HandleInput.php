@@ -9,7 +9,13 @@ class HandleInput implements HandleCommandDataInterface
 
     public function determine(string $function, array $input = []): string
     {
-        call_user_func_array(lcfirst(trim(preg_replace('/\n/', '', $function))), $input);
+
+        $function = lcfirst(trim(preg_replace('/\n/', '', $function)));
+        if (function_exists($function) === true) {
+            return $this->$function();
+        }
+        return "Sorry, unfortunately that command does not exist!\nPlease enter a new command or terminate the shell?\n";
+
     }
 
     private function create_parking_lot(): string
@@ -46,10 +52,6 @@ class HandleInput implements HandleCommandDataInterface
     private function reset(): string
     {
         return 'reset';
-
-    }
-    function exit(): string {
-        return 'Thank you, you have exited the program';
 
     }
 

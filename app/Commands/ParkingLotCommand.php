@@ -8,17 +8,15 @@ use App\Commands\InteractiveCommand;
 class ParkingLotCommand
 {
 
-    public function run()
+    public function run(): void
     {
         $output = shell_exec('vendor/bin/phpunit tests/*');
 
-        print_r($_SERVER["argv"]);
-
         if (count($_SERVER["argv"]) > 1) {
-            return (new InteractiveCommand())->run();
+            print_r((new AutomatedCommand())->run());
+        } else {
+            print_r((new InteractiveCommand())->run());
         }
-
-        return (new AutomatedCommand())->run();
 
     }
 

@@ -19,7 +19,7 @@ class InteractiveCommand
 
         } else {
 
-            throw new Exception('Sorry, please try again and enter an amount bigger than 1');
+            throw new \Exception('Sorry, please try again and enter an amount bigger than 1');
 
         }
 

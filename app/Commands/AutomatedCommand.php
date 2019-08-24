@@ -4,9 +4,11 @@ namespace App\commands;
 
 final class AutomatedCommand
 {
-    public function run()
+    public function run(bool $test = false)
     {
-        echo 'automated command has been opened';
-
+        if (!$test) {
+            print_r(trim("There are " . $_SERVER["argc"] . " arguments"));
+            print_r($_SERVER["argv"]);
+        }
     }
 }

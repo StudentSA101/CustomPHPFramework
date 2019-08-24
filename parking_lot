@@ -1,19 +1,23 @@
 #!/usr/bin/php
 <?php
 
+use App\Commands\AutomatedCommand;
+use App\Commands\InteractiveCommand;
+
 final class ParkingLot
 {
 
     public function run()
     {
         $output = shell_exec('vendor/bin/phpunit tests/*');
-        echo "<pre>$output</pre>";
+
+        print_r($_SERVER["argv"]);
 
         if (count($_SERVER["argv"]) > 1) {
-            return require __dir__ . '/app/Commands/InteractiveCommand.php';
+            return (new InteractiveCommand())->run();
         }
 
-        return require __dir__ . '/app/Commands/AutomatedCommand.php';
+        return (new AutomatedCommand())->run();
 
     }
 

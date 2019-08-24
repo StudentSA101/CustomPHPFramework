@@ -1,156 +1,112 @@
 <?php
 declare (strict_types = 1);
 
+use App\Commands\AutomatedCommand;
 use PHPUnit\Framework\TestCase;
-
-$private 
 
 final class AutomatedCommandTest extends TestCase
 {
 
-    public function setUp()
+    private $command;
+
+    public function setUp(): void
     {
-        $this->testsub = new TestSubject();
+        $this->command = new AutomatedCommand();
+    }
+
+    public function testRunCommand(): void
+    {
+        $result = $this->command->run(true);
+        $this->assertSame('automated command has been opened', $result);
     }
 
     public function testExample1(): void
     {
-        
+
     }
 
     public function testExample2(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testExample3(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testExtremes(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testTrailingZeros(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testPower_of_2(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testSimple1(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testSimple2(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testSimple3(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testMedium1(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testMedium2(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testMedium3(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testLarge1(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testLarge2(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testLarge3(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testLarge4(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testLarge5(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 
     public function testLarge6(): void
     {
-        $this->assertInstanceOf(
-            Email::class,
-            Email::fromString('user@example.com')
-        );
+
     }
 }

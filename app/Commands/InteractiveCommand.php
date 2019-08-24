@@ -1,17 +1,28 @@
 <?php
 
-echo "Welcome, how many parking lots do you have?";
+namespace App\commands;
 
-$parkingLot = fread(STDIN, 80);
+final class AutomatedCommand
+{
 
-$parkingLot = trim($site);
+    public function run()
+    {
+        echo "Welcome, how many parking lots do you have?";
 
-if (count($parkingLot) > 0 && ctype_digit($parkingLot)) {
+        $parkingLot = fread(STDIN, 80);
 
-    echo "Are you sure that one is your favorite?n";
+        $parkingLot = trim($site);
 
-} else {
+        if (count($parkingLot) > 0 && ctype_digit($parkingLot)) {
 
-    throw new Exception('Sorry, please try again and enter an amount bigger than 1');
+            echo "Are you sure that one is your favorite?n";
+
+        } else {
+
+            throw new Exception('Sorry, please try again and enter an amount bigger than 1');
+
+        }
+
+    }
 
 }

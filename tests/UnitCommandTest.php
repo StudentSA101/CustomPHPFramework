@@ -1,6 +1,8 @@
 <?php
 declare (strict_types = 1);
 
+namespace Tests;
+
 use App\Commands\TestCommand;
 use App\Repository\HandleInput;
 use PHPUnit\Framework\TestCase;

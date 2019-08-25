@@ -207,4 +207,9 @@ class VehicleModal
         }
 
     }
+
+    public static function Query()
+    {
+
+    }
 }

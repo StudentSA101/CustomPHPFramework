@@ -60,20 +60,41 @@ class HandleInput implements HandleCommandDataInterface
     }
     private function status(): string
     {
-        return "Slot number " . VehicleModal::status() . " is free.";
+        return "Slot number " . VehicleModal::status() . " is free.\n";
     }
-    private function registration_numbers_for_cars_with_colour(): string
+    private function registration_numbers_for_cars_with_colour($parameter): mixed
     {
-        return 'registration_numbers_for_cars_with_colour';
+        if (count($parameter) === 0) {
+            return "Error, Please try again.\n";
+        }
+
+        echo "Slot No. Registration No\n";
+
+        foreach (VehicleModal::Query($parameter, "vehicle_colour") as $value) {
+            echo $value;
+        }
 
     }
-    private function slot_numbers_for_cars_with_colour(): string
+    private function slot_numbers_for_cars_with_colour($parameter): string
     {
-        return 'slot_numbers_for_cars_with_colour';
+        if (count($parameter) === 0) {
+            return "Error, Please try again.\n";
+        }
+
+        echo "Slot No. Registration No\n";
+
+        foreach (VehicleModal::Query($parameter, 'vehicle_colour') as $value) {
+            echo $value;
+        }
 
     }
-    private function slot_number_for_registration_number(): string
+    private function slot_number_for_registration_number($parameter): string
     {
+
+        if (count($parameter) === 0) {
+            return "Error, Please try again.\n";
+        }
+
         return 'slot_number_for_registration_number';
 
     }

@@ -2,18 +2,17 @@
 
 namespace App\controllers;
 
+use App\Helpers\Helpers;
 use Container;
 
-use App\Helpers\Helpers;
-
-class HomeController 
+class HomeController
 {
     public function index()
     {
-        
-        $statement = Container::get('pdo')->prepare('select * from projects');
 
-        $statement->execute();
+        $statement = Container::get('database')->prepare('select * from slots');
+
+        $statement->exec();
 
         var_dump($statement->fetchAll());
 

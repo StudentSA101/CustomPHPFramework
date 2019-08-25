@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Contracts\HandleCommandDataInterface;
-use Container;
+use App\Helpers\ParkingLotMigrations;
 
 class HandleInput implements HandleCommandDataInterface
 {
@@ -16,6 +16,7 @@ class HandleInput implements HandleCommandDataInterface
         if (method_exists(HandleInput::class, $function)) {
             return $this->$function($input);
         }
+
         return "Sorry, unfortunately that command does not exist!\nPlease enter a new command or terminate the shell?\n";
 
     }
@@ -23,12 +24,16 @@ class HandleInput implements HandleCommandDataInterface
     private function create_parking_lot(array $data): string
     {
         if (count($data) === 0) {
-            return "Please enter an amount\n";
+            return "Error, Please try again.\n";
+        }
+        var_dump(ParkingLotMigrations::checkIfParkingSlotsCreated());
+        if (!ParkingLotMigrations::checkIfParkingSlotsCreated()) {
+            ParkingLotMigrations::createParkingLot();
+            ParkingLotMigrations::insertParkingSlots($data[0]);
+            return 'Created a parking lot with 6 slots';
         }
 
-        Container::get('pdo')->prepare('select * from projects');
-
-        return 'create_parking_lot SQL Query ' . $data[0];
+        return 'Parking Lot already exists. Do you want to delete existing parking lot?';
     }
     private function park(array $data): string
     {

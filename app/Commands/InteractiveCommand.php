@@ -30,7 +30,7 @@ class InteractiveCommand
             $parameters = preg_split('/\s/', $input);
 
         }
-        echo "The Command Shell has been terminated ";
+        echo "\nThe Command Shell has been terminated\n\n";
     }
 
 }

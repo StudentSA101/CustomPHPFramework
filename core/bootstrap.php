@@ -11,7 +11,7 @@ require __DIR__ . '/Container.php';
 require __DIR__ . '/Router.php';
 require __DIR__ . '/Request.php';
 
-Container::bind('pdo', (new Connection(Config::sqlite()))->connect());
+Container::bind('database', (new Connection(Config::sqlite()))->connect());
 
 Router::load('/../routes/web.php')
     ->direct(Request::uri(), Request::method());

@@ -68,7 +68,6 @@ class HandleInput implements HandleCommandDataInterface
             return "Error, Please try again.\n";
         }
 
-        echo "Registration No\n";
         $result = '';
         $retrieved = VehicleModal::Query($data);
         if ($retrieved !== 'None') {
@@ -97,7 +96,6 @@ class HandleInput implements HandleCommandDataInterface
     }
     private function slot_number_for_registration_number(array $data): string
     {
-
         if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
@@ -112,7 +110,6 @@ class HandleInput implements HandleCommandDataInterface
         ParkingLotMigrations::dropParkingLot();
 
         return "Parking Lot Successfully Deleted\n";
-
     }
 
 }

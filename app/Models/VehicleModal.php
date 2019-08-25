@@ -75,10 +75,13 @@ class VehicleModal
         try {
             $query = "SELECT slots_id AS vehicles FROM vehicles WHERE registration_number = :registration";
             $statement = Container::get('database')->prepare($query);
-            $statement->bindParam(':id', $registration);
+            $statement->bindParam(':registration', $registration);
             $statement->execute();
             $retrieved = $statement->fetchAll();
-            if (count($retrieved) !== 0) {
+            if (count($retrieved) === 0) {
+                return "None";
+            }
+            if ($retrieved[0]['vehicles'] == null) {
                 $slotsId = $retrieved[0]['vehicles'];
                 try {
                     $query = "SELECT id AS Parking_Slot FROM slots WHERE active = 'FALSE' LIMIT 1";
@@ -140,6 +143,7 @@ class VehicleModal
 
     public static function delete($id)
     {
+
         $numberExists = false;
         try {
             $query = "SELECT id FROM slots WHERE id = :id";
@@ -157,13 +161,14 @@ class VehicleModal
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
+
         if ($numberExists) {
+
             try {
-                $query = "UPDATE vehicles SET slots_id = NULL WHERE Slots_id = :id";
+                $query = "UPDATE vehicles SET slots_id = NULL WHERE slots_id = :id";
                 $statement = Container::get('database')->prepare($query);
                 $statement->bindParam(':id', $id);
                 $statement->execute();
-                $existing = $statement->fetchAll();
             } catch (PDOException $e) {
                 print "Error!: " . $e->getMessage() . "<br/>";
                 die();

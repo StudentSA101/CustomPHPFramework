@@ -15,11 +15,9 @@ class ParkingLotMigrations
             )',
             'CREATE TABLE IF NOT EXISTS vehicles (
                 id INTEGER PRIMARY KEY,
-                slots_id VARCHAR (255),
+                slots_id VARCHAR (255) DEFAULT NULL,
                 registration_number VARCHAR (255),
-                vehicle_colour VARCHAR (255),
-                FOREIGN KEY (slots_id)
-                REFERENCES slots(id)
+                vehicle_colour VARCHAR (255)
             )',
         ];
 
@@ -30,7 +28,7 @@ class ParkingLotMigrations
 
     public static function insertParkingSlots($constant)
     {
-        for ($i = 0; $i < $constant; $i++) {
+        for ($i = 1; $i <= $constant; $i++) {
             Container::get('database')
                 ->exec("INSERT INTO slots(id) VALUES($i)");
         }

@@ -27,7 +27,6 @@ class HandleInput implements HandleCommandDataInterface
         if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
-        var_dump($data);
         if (!ParkingLotMigrations::checkIfParkingSlotsCreated()) {
             ParkingLotMigrations::createParkingLot();
             ParkingLotMigrations::insertParkingSlots($data[1]);
@@ -42,10 +41,14 @@ class HandleInput implements HandleCommandDataInterface
             return "Error, Please try again.\n";
         }
 
-        return 'Allocated slot number: ' . VehicleModal::create($data[1], $data[2]);
+        return "Allocated slot number: " . VehicleModal::create($data[1], $data[2]) . "\n";
     }
     private function leave(array $data): string
     {
+        if (count($data) === 0) {
+            return "Error, Please try again.\n";
+        }
+        VehicleModal::delete($data[1]);
         return 'leave' . $data[0];
     }
     private function status(): string

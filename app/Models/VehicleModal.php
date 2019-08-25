@@ -8,8 +8,25 @@ class VehicleModal
 {
     public static function create($registration, $colour)
     {
+        $firstOpenSlot;
         try {
-            $query = "SELECT registration_number AS Registration_Number FROM vehicles WHERE registration_number = :existing";
+            $query = "SELECT id AS Parking_Slot FROM slots WHERE active = 'FALSE' LIMIT 1 ";
+            $statement = Container::get('database')->prepare($query);
+            $statement->execute();
+            $retrieved = $statement->fetchAll();
+            if (count($retrieved) > 0) {
+                $firstOpenSlot = $retrieved[0]['Parking_Slot'];
+            } else {
+                return "None\n";
+            }
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+
+        try {
+            $query = "SELECT registration_number FROM vehicles WHERE registration_number = :id";
             $statement = Container::get('database')->prepare($query);
             $statement->bindParam(':id', $firstOpenSlot);
             $statement->execute();
@@ -18,16 +35,8 @@ class VehicleModal
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
-        if (count($existing) > 0) {
-            try {
-                $query = "SELECT id AS Parking_Slot FROM slots WHERE active = 'TRUE' LIMIT 1 ";
-                $statement = Container::get('database')->prepare($query);
-                $statement->execute();
-                $firstOpenSlot = $statement->fetchAll()[0]['Parking_Slot'];
-            } catch (PDOException $e) {
-                print "Error!: " . $e->getMessage() . "<br/>";
-                die();
-            }
+
+        if (count($existing) === 0) {
             try {
                 $query = "INSERT INTO vehicles(slots_id,registration_number,vehicle_colour) VALUES(:id,:registration,:colour)";
                 $statement = Container::get('database')->prepare($query);
@@ -42,7 +51,33 @@ class VehicleModal
 
         }
 
+        try {
+            $query = "UPDATE slots SET active = 'TRUE' WHERE id = :id";
+            $statement = Container::get('database')->prepare($query);
+            $statement->bindParam(':id', $firstOpenSlot);
+            $statement->execute();
+            $existing = $statement->fetchAll();
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+
         return $firstOpenSlot;
+    }
+
+    public function delete($id)
+    {
+        try {
+            $query = "UPDATE vehicles SET slots_id = NULL WHERE Slots_id = :id";
+            $statement = Container::get('database')->prepare($query);
+            $statement->bindParam(':id', $id);
+            $statement->execute();
+            $existing = $statement->fetchAll();
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+
     }
 
 }

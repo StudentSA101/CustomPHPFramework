@@ -78,11 +78,8 @@ class VehicleModal
             $statement->bindParam(':id', $registration);
             $statement->execute();
             $retrieved = $statement->fetchAll();
-
             if (count($retrieved) !== 0) {
                 $slotsId = $retrieved[0]['vehicles'];
-            }
-            if ($slotsId === null) {
                 try {
                     $query = "SELECT id AS Parking_Slot FROM slots WHERE active = 'FALSE' LIMIT 1";
                     $statement = Container::get('database')->prepare($query);
@@ -138,7 +135,7 @@ class VehicleModal
             die();
         }
 
-        return $slotsId;
+        return "Updated Vehicle but no open slot\n";
     }
 
     public static function delete($id)

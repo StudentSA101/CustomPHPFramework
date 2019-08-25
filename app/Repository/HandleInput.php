@@ -41,8 +41,8 @@ class HandleInput implements HandleCommandDataInterface
             return "Error, Please try again.\n";
         }
         $result = VehicleModal::create($data[1], $data[2]);
-        if ($result !== "This is an existing vehicle!") {
-            return "Allocated slot number: " . VehicleModal::create($data[1], $data[2]) . "\n";
+        if ($result !== "This is an existing vehicle!" && $result !== 'None') {
+            return "Allocated slot number: " . $result . "\n";
         }
         return "Allocated slot number: " . VehicleModal::update($data[1], $data[2]) . "\n";
 

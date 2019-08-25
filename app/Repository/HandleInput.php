@@ -48,8 +48,12 @@ class HandleInput implements HandleCommandDataInterface
         if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
-        VehicleModal::delete($data[1]);
-        return 'leave' . $data[0];
+        $response = VehicleModal::delete($data[1]);
+        if ($response !== 'Does not exist') {
+            return "Slot number $data[1] is free" . VehicleModal::delete($data[1]) . "\n";
+
+        }
+        return "The slot number does not exist!\n";
     }
     private function status(): string
     {

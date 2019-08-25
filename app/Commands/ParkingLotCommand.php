@@ -2,6 +2,11 @@
 
 namespace App\Commands;
 
+use App\Commands\AutomatedCommand;
+use App\Commands\InteractiveCommand;
+use App\Repository\GetFileContent;
+use App\Repository\HandleInput;
+
 class ParkingLotCommand
 {
 

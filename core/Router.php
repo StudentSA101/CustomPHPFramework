@@ -1,14 +1,26 @@
 <?php
-
+/**
+ * Class that controls the routing of the framework
+ */
 class Router
 {
+    /**
+     * Routes array with the verbs that can be used for routes
+     *
+     * @var array
+     */
     public $routes = [
         'POST' => [],
         'GET' => [],
         'PUT' => [],
         'DEL' => [],
     ];
-
+    /**
+     * Static Function to load up routes.
+     *
+     * @param [type] $file
+     * @return void
+     */
     public static function load($file)
     {
         $router = new static;
@@ -17,12 +29,24 @@ class Router
 
         return $router;
     }
-
+    /**
+     * Post Verb
+     *
+     * @param String $uri
+     * @param String $controller
+     * @return void
+     */
     public function post($uri, $controller)
     {
         $this->routes['POST'][$uri] = $controller;
     }
-
+    /**
+     * Get Verb
+     *
+     * @param String $uri
+     * @param String $controller
+     * @return void
+     */
     public function get($uri, $controller)
     {
         $this->routes['GET'][$uri] = $controller;

@@ -26,17 +26,21 @@ class HandleInput implements HandleCommandDataInterface
         if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
-        var_dump(ParkingLotMigrations::checkIfParkingSlotsCreated());
+
         if (!ParkingLotMigrations::checkIfParkingSlotsCreated()) {
             ParkingLotMigrations::createParkingLot();
             ParkingLotMigrations::insertParkingSlots($data[0]);
-            return 'Created a parking lot with 6 slots';
+            return "Created a parking lot with $data[0] slots\n";
         }
 
-        return 'Parking Lot already exists. Do you want to delete existing parking lot?';
+        return "Parking Lot already exists. Delete existing parking lot to continue or enter another command.\n";
     }
     private function park(array $data): string
     {
+        if (count($data) === 0) {
+            return "Error, Please try again.\n";
+        }
+        var_dump($data);
         return 'park' . $data[0] . $data[1];
     }
     private function leave(array $data): string
@@ -64,7 +68,9 @@ class HandleInput implements HandleCommandDataInterface
     }
     private function reset(): string
     {
-        return 'reset';
+        ParkingLotMigrations::dropParkingLot();
+
+        return "Parking Lot Successfully Deleted\n";
 
     }
 

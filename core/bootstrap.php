@@ -16,4 +16,4 @@ Container::bind('database', (new Connection(Config::sqlite()))->connect());
 Router::load('/../routes/web.php')
     ->direct(Request::uri(), Request::method());
 
-(new MigrateTables(Container::get('pdo')))->createTables();
+(new MigrateTables(Container::get('database')))->createTables();

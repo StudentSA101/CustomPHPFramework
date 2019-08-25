@@ -41,8 +41,8 @@ class HandleInput implements HandleCommandDataInterface
         if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
-        VehicleModal::create($data[1], $data[2]);
-        return 'Allocated slot number:' . $data[1] . $data[2];
+
+        return 'Allocated slot number: ' . VehicleModal::create($data[1], $data[2]);
     }
     private function leave(array $data): string
     {

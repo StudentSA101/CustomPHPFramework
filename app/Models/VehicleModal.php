@@ -8,9 +8,21 @@ class VehicleModal
 {
     public static function create($registration, $colour)
     {
-        $openParking = Container::get('database')->exec("SELECT id FROM Users WHERE username='$name' limit 1");
-        Container::get('database')
-            ->exec("INSERT INTO vehicles(slots_id,registration_number,colour) VALUES($openParking,$registration,$colour)");
+        try {
+            $query = "SELECT 'id' FROM slots asc LIMIT 3";
+            $statement = Container::get('database')->prepare($query);
+
+            $statement->execute();
+            $lotDetails = $statement->fetch();
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+        $query = "INSERT INTO vehicles(slots_id,registration_number,colour) VALUES($openParking,$registration,$colour)";
+        $statement = Container::get('database')->prepare($query)->$statement->execute();
+
+        return $openParking;
     }
 
 }

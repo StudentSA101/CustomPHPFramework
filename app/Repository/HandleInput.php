@@ -71,11 +71,11 @@ class HandleInput implements HandleCommandDataInterface
         echo "Slot No. Registration No\n";
 
         foreach (VehicleModal::Query($parameter, "vehicle_colour") as $value) {
-            echo $value;
+            echo $value['Registration_Number'];
         }
 
     }
-    private function slot_numbers_for_cars_with_colour($parameter): string
+    private function slot_numbers_for_cars_with_colour($parameter): mixed
     {
         if (count($parameter) === 0) {
             return "Error, Please try again.\n";
@@ -84,18 +84,19 @@ class HandleInput implements HandleCommandDataInterface
         echo "Slot No. Registration No\n";
 
         foreach (VehicleModal::Query($parameter, 'vehicle_colour') as $value) {
-            echo $value;
+            echo $value['Slot_Number'];
         }
 
     }
-    private function slot_number_for_registration_number($parameter): string
+    private function slot_number_for_registration_number($parameter): mixed
     {
 
         if (count($parameter) === 0) {
             return "Error, Please try again.\n";
         }
-
-        return 'slot_number_for_registration_number';
+        foreach (VehicleModal::Query($parameter, 'registration_number') as $value) {
+            echo $value['Registration_Number'];
+        }
 
     }
     private function reset(): string

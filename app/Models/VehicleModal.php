@@ -69,15 +69,19 @@ class VehicleModal
 
     public static function update($registration, $colour)
     {
-        var_dump('here');
+
         $firstOpenSlot;
+        $slotsId = null;
         try {
             $query = "SELECT slots_id AS vehicles FROM vehicles WHERE registration_number = :registration";
             $statement = Container::get('database')->prepare($query);
             $statement->bindParam(':id', $registration);
             $statement->execute();
             $retrieved = $statement->fetchAll();
-            $slotsId = $retrieved[0]['vehicles'];
+
+            if (count($retrieved) !== 0) {
+                $slotsId = $retrieved[0]['vehicles'];
+            }
             if ($slotsId === null) {
                 try {
                     $query = "SELECT id AS Parking_Slot FROM slots WHERE active = 'FALSE' LIMIT 1";

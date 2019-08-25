@@ -3,7 +3,7 @@
 /**
  * Database Connection
  */
-class Connection
+class Connection implements DatabaseContract
 {
     /**
      * PDO instance

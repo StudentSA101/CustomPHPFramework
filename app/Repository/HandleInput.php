@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Contracts\HandleCommandDataInterface;
+use Container;
 
 class HandleInput implements HandleCommandDataInterface
 {
@@ -11,24 +12,31 @@ class HandleInput implements HandleCommandDataInterface
     {
 
         $function = lcfirst(trim(preg_replace('/\n/', '', $function)));
-        if (function_exists($function) === true) {
-            return $this->$function();
+
+        if (method_exists(HandleInput::class, $function)) {
+            return $this->$function($input);
         }
         return "Sorry, unfortunately that command does not exist!\nPlease enter a new command or terminate the shell?\n";
 
     }
 
-    private function create_parking_lot(): string
+    private function create_parking_lot(array $data): string
     {
-        return 'create_parking_lot';
+        if (count($data) === 0) {
+            return "Please enter an amount\n";
+        }
+
+        Container::get('pdo')->prepare('select * from projects');
+
+        return 'create_parking_lot SQL Query ' . $data[0];
     }
-    private function park(): string
+    private function park(array $data): string
     {
-        return 'park';
+        return 'park' . $data[0] . $data[1];
     }
-    private function leave(): string
+    private function leave(array $data): string
     {
-        return 'leave';
+        return 'leave' . $data[0];
     }
     private function status(): string
     {

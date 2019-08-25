@@ -12,7 +12,7 @@ class ParkingLotCommand
 
     public function run(): void
     {
-        $output = shell_exec('vendor/bin/phpunit tests/*');
+        echo shell_exec('vendor/bin/phpunit tests/*');
 
         if (count($_SERVER["argv"]) > 1) {
             (new AutomatedCommand(new HandleInput, new GetFileContent))->run();

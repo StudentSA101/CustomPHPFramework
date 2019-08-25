@@ -13,18 +13,22 @@ class InteractiveCommand
         $this->handle = $handle;
     }
 
-    public function run(): void
+    public function run(bool $test = false): void
     {
-        echo "Welcome, how many parking lots do you have? ";
+        echo "\nWelcome to the Parking Lot Terminal\n\n";
+
         $input = lcfirst(trim(preg_replace('/\n/', '', fread(STDIN, 80))));
-        $parameters = explode($input, '');
+        $parameters = preg_split('/\s/', $input);
+
         while ($input !== 'exit') {
-            if (count($parameters) === 1) {
-                print_r($this->handle->determine($input));
-            } else {
-                print_r($this->handle->determine($parameters[0], $parameters[1]));
+            if (count($parameters) > 1) {
+                echo $this->handle->determine($parameters[0], [$parameters[1]]);
+            } else if (count($parameters) === 1) {
+                echo $this->handle->determine($input, []);
             }
             $input = lcfirst(trim(preg_replace('/\n/', '', fread(STDIN, 80))));
+            $parameters = preg_split('/\s/', $input);
+
         }
         echo "The Command Shell has been terminated ";
     }

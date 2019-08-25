@@ -17,7 +17,7 @@ class AutomatedCommand
         $this->file = $file;
     }
 
-    public function run(bool $test = false)
+    public function run(bool $test = false): void
     {
 
         if (count($_SERVER["argv"]) > 2) {

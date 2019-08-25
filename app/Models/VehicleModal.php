@@ -86,7 +86,7 @@ class VehicleModal
             die();
         }
         try {
-            $query = "INSERT INTO vehicles(slots_id,registration_number,vehicle_colour) VALUES(:id,:registration,:colour)";
+            $query = "UPDATE vehicles(slots_id,registration_number,vehicle_colour) SET(:id,:registration,:colour) WHERE registration_number = :registration";
             $statement = Container::get('database')->prepare($query);
             $statement->bindParam(':id', $firstOpenSlot);
             $statement->bindParam(':registration', $registration);

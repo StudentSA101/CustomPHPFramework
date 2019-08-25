@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Contracts\HandleCommandDataInterface;
 use App\Helpers\ParkingLotMigrations;
+use App\Models\VehicleModal;
 
 class HandleInput implements HandleCommandDataInterface
 {
@@ -26,11 +27,11 @@ class HandleInput implements HandleCommandDataInterface
         if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
-
+        var_dump($data);
         if (!ParkingLotMigrations::checkIfParkingSlotsCreated()) {
             ParkingLotMigrations::createParkingLot();
-            ParkingLotMigrations::insertParkingSlots($data[0]);
-            return "Created a parking lot with $data[0] slots\n";
+            ParkingLotMigrations::insertParkingSlots($data[1]);
+            return "Created a parking lot with $data[1] slots\n";
         }
 
         return "Parking Lot already exists. Delete existing parking lot to continue or enter another command.\n";
@@ -40,8 +41,8 @@ class HandleInput implements HandleCommandDataInterface
         if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
-        var_dump($data);
-        return 'park' . $data[0] . $data[1];
+        VehicleModal::create($data[1], $data[2]);
+        return 'Allocated slot number:' . $data[1] . $data[2];
     }
     private function leave(array $data): string
     {

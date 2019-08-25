@@ -22,7 +22,7 @@ class InteractiveCommand
 
         while ($input !== 'exit') {
             if (count($parameters) > 1) {
-                echo $this->handle->determine($parameters[0], [$parameters[1]]);
+                echo $this->handle->determine($parameters[0], $parameters);
             } else if (count($parameters) === 1) {
                 echo $this->handle->determine($input, []);
             }

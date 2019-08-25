@@ -5,18 +5,40 @@ namespace App\Commands;
 use App\Contracts\GetFileContentsInterface;
 use App\Contracts\HandleCommandDataInterface;
 
+/**
+ * Command class that parses a file and serves the output for application
+ */
 class AutomatedCommand
 {
-
+    /**
+     * Data handler object
+     *
+     * @var HandleCommandDataInterface
+     */
     private $handle;
+    /**
+     * File Parser object
+     *
+     * @var GetFileContentsInterface
+     */
     private $file;
-
+    /**
+     * inject dependencies into class
+     *
+     * @param HandleCommandDataInterface $handle
+     * @param GetFileContentsInterface $file
+     */
     public function __construct(HandleCommandDataInterface $handle, GetFileContentsInterface $file)
     {
         $this->handle = $handle;
         $this->file = $file;
     }
-
+    /**
+     * method to run instantiate the command
+     *
+     * @param boolean $test
+     * @return void
+     */
     public function run(bool $test = false): void
     {
 

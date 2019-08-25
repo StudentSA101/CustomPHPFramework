@@ -51,17 +51,37 @@ class Router
     {
         $this->routes['GET'][$uri] = $controller;
     }
-
+    /**
+     * Get put
+     *
+     * @param String $uri
+     * @param String $controller
+     * @return void
+     */
     public function put($uri, $controller)
     {
         $this->routes['PUT'][$uri] = $controller;
     }
+    /**
+     * Get del
+     *
+     * @param String $uri
+     * @param String $controller
+     * @return void
+     */
 
     public function del($uri, $controller)
     {
         $this->routes['DEL'][$uri] = $controller;
     }
 
+    /**
+     * Resolve uri to controller
+     *
+     * @param String $uri
+     * @param String $requestType
+     * @return void
+     */
     public function direct($uri, $requestType)
     {
         if (array_key_exists($uri, $this->routes[$requestType])) {
@@ -74,7 +94,13 @@ class Router
         );
 
     }
-
+    /**
+     * Function to call controller class method
+     *
+     * @param [type] $controller
+     * @param [type] $action
+     * @return void
+     */
     protected function callAction($controller, $action)
     {
 

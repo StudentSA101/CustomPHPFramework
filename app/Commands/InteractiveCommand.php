@@ -4,8 +4,16 @@ namespace App\Commands;
 
 use App\Contracts\HandleCommandDataInterface;
 
+/**
+ * Command Class that receives input interactively and serves response to user
+ */
 class InteractiveCommand
 {
+    /**
+     * Datahandler object
+     *
+     * @var HandleCommandDataInterface
+     */
     private $handle;
 
     public function __construct(HandleCommandDataInterface $handle)

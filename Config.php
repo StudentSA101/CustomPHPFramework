@@ -1,27 +1,28 @@
 <?php
- 
-class Config {
 
-   /**
-    * Database configuration
-    */
+class Config
+{
 
-    public static function mysql() : array
+    /**
+     * Database configuration
+     */
+
+    public static function mysql(): array
     {
         return [
             'connection' => 'mysql:host=127.0.0.1;dbname=bleh',
             'username' => 'asdf',
             'password' => 'asdfasdf',
-            'options' => ''
+            'options' => '',
         ];
     }
 
-   /**
-    * Database configuration
-    */
-    
-    public static function sqlite() : String
+    /**
+     * Database configuration
+     */
+
+    public static function sqlite(): String
     {
-        return "sqlite:".__DIR__."/db/database.sqlite";
+        return "sqlite:" . __DIR__ . "/db/database.sqlite";
     }
 }

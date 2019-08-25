@@ -4,8 +4,19 @@ namespace App\Models;
 
 use Container;
 
+/**
+ * Class to make database calls
+ * ORM to be established eventually for now functional programming
+ */
 class VehicleModal
 {
+    /**
+     * Static function to create database entry
+     *
+     * @param String $registration
+     * @param String $colour
+     * @return void
+     */
     public static function create($registration, $colour)
     {
         $firstOpenSlot;
@@ -66,7 +77,13 @@ class VehicleModal
 
         return $firstOpenSlot;
     }
-
+    /**
+     * Static funtion to udpate database.
+     *
+     * @param String $registration
+     * @param String $colour
+     * @return void
+     */
     public static function update($registration, $colour)
     {
 
@@ -140,7 +157,12 @@ class VehicleModal
 
         return "Updated Vehicle but no open slot\n";
     }
-
+    /**
+     * Static function to delete entry in Database
+     *
+     * @param String $id
+     * @return void
+     */
     public static function delete($id)
     {
 
@@ -187,6 +209,11 @@ class VehicleModal
         }
 
     }
+    /**
+     * Static function to check active column in slots table
+     *
+     * @return void
+     */
     public static function status()
     {
         $firstOpenSlot;
@@ -207,7 +234,12 @@ class VehicleModal
         }
 
     }
-
+    /**
+     * General Queries to database for specific data
+     *
+     * @param [type] $data
+     * @return void
+     */
     public static function Query($data)
     {
         if ($data[0] === 'slot_numbers_for_cars_with_colour') {

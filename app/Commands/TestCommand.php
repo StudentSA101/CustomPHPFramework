@@ -4,6 +4,9 @@ namespace App\Commands;
 
 use App\Contracts\HandleCommandDataInterface;
 
+/**
+ * Command Class setup for testing purposes
+ */
 class TestCommand
 {
     private $handle;

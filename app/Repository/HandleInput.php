@@ -6,9 +6,18 @@ use App\Contracts\HandleCommandDataInterface;
 use App\Helpers\ParkingLotMigrations;
 use App\Models\VehicleModal;
 
+/**
+ * Class to handle command input
+ */
 class HandleInput implements HandleCommandDataInterface
 {
-
+    /**
+     * resolves the particular method based on argument
+     *
+     * @param string $function
+     * @param array $input
+     * @return string
+     */
     public function determine(string $function, array $input = []): string
     {
 
@@ -21,7 +30,12 @@ class HandleInput implements HandleCommandDataInterface
         return "Sorry, unfortunately that command does not exist!\nPlease enter a new command or terminate the shell?\n";
 
     }
-
+    /**
+     * create database with tables
+     *
+     * @param array $data
+     * @return string
+     */
     private function create_parking_lot(array $data): string
     {
         if (count($data) === 0) {
@@ -35,6 +49,12 @@ class HandleInput implements HandleCommandDataInterface
 
         return "Parking Lot already exists. Delete existing parking lot to continue or enter another command.\n";
     }
+    /**
+     * Create entry in database
+     *
+     * @param array $data
+     * @return string
+     */
     private function park(array $data): string
     {
         if (count($data) < 3) {
@@ -47,6 +67,13 @@ class HandleInput implements HandleCommandDataInterface
         return "Allocated slot number: " . VehicleModal::update($data[1], $data[2]) . "\n";
 
     }
+    /**
+     * remove entry from table
+     *
+     * @param array $data
+     * @return string
+     */
+
     private function leave(array $data): string
     {
         if (count($data) === 0) {
@@ -58,10 +85,21 @@ class HandleInput implements HandleCommandDataInterface
         }
         return "The slot number does not exist!\n";
     }
+    /**
+     * Check first open spot in database
+     *
+     * @return string
+     */
     private function status(): string
     {
         return "Slot number " . VehicleModal::status() . " is free.\n";
     }
+    /**
+     * Retrieve set of database based on colour
+     *
+     * @param array $data
+     * @return string
+     */
     private function registration_numbers_for_cars_with_colour(array $data): string
     {
         if (count($data) === 0) {
@@ -79,6 +117,12 @@ class HandleInput implements HandleCommandDataInterface
         return "None\n";
 
     }
+    /**
+     * Retrieve set of database based on colour
+     *
+     * @param array $data
+     * @return string
+     */
     private function slot_numbers_for_cars_with_colour(array $data): string
     {
         if (count($data) === 0) {
@@ -94,6 +138,12 @@ class HandleInput implements HandleCommandDataInterface
         }
         return "None\n";
     }
+    /**
+     * Retrieve set of data based on registration number
+     *
+     * @param array $data
+     * @return string
+     */
     private function slot_number_for_registration_number(array $data): string
     {
         if (count($data) === 0) {
@@ -105,6 +155,11 @@ class HandleInput implements HandleCommandDataInterface
         }
         return "None\n";
     }
+    /**
+     * Drop the tables
+     *
+     * @return string
+     */
     private function reset(): string
     {
         ParkingLotMigrations::dropParkingLot();

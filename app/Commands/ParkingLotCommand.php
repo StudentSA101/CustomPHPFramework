@@ -7,6 +7,9 @@ use App\Commands\InteractiveCommand;
 use App\Repository\GetFileContent;
 use App\Repository\HandleInput;
 
+/**
+ * Command to resolve Automated and Interactive Commands
+ */
 class ParkingLotCommand
 {
 

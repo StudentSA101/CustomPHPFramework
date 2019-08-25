@@ -4,8 +4,16 @@ namespace App\Helpers;
 
 use Container;
 
+/**
+ * Class setup as a helper to create the database.
+ */
 class ParkingLotMigrations
 {
+    /**
+     * static method used to create the database
+     *
+     * @return void
+     */
     public static function createParkingLot()
     {
         $command = [
@@ -25,7 +33,12 @@ class ParkingLotMigrations
         Container::get('database')->exec($command[1]);
 
     }
-
+    /**
+     * static method used to insert parking bays in slots table
+     *
+     * @param String $constant
+     * @return void
+     */
     public static function insertParkingSlots($constant)
     {
         for ($i = 1; $i <= $constant; $i++) {
@@ -33,7 +46,11 @@ class ParkingLotMigrations
                 ->exec("INSERT INTO slots(id) VALUES($i)");
         }
     }
-
+    /**
+     * Method to check whether the database exists or not
+     *
+     * @return void
+     */
     public static function checkIfParkingSlotsCreated()
     {
         $check = Container::get('database')->exec("SELECT * from 'slots'");
@@ -43,7 +60,11 @@ class ParkingLotMigrations
         return true;
 
     }
-
+    /**
+     * Static method to drop the tables in database
+     *
+     * @return void
+     */
     public static function dropParkingLot()
     {
         Container::get('database')->exec('DROP TABLE vehicles');

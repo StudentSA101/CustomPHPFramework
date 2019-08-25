@@ -60,7 +60,7 @@ class HandleInput implements HandleCommandDataInterface
     }
     private function status(): string
     {
-        return 'status';
+        return "Slot number " . VehicleModal::status() . " is free.";
     }
     private function registration_numbers_for_cars_with_colour(): string
     {

@@ -187,5 +187,24 @@ class VehicleModal
         }
 
     }
+    public static function status()
+    {
+        $firstOpenSlot;
+        try {
+            $query = "SELECT id AS Parking_Slot FROM slots WHERE active = 'FALSE' LIMIT 1 ";
+            $statement = Container::get('database')->prepare($query);
+            $statement->execute();
+            $retrieved = $statement->fetchAll();
+            if (count($retrieved) > 0) {
+                return $retrieved[0]['Parking_Slot'];
+            } else {
+                return "None\n";
+            }
 
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+
+    }
 }

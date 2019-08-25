@@ -62,42 +62,50 @@ class HandleInput implements HandleCommandDataInterface
     {
         return "Slot number " . VehicleModal::status() . " is free.\n";
     }
-    private function registration_numbers_for_cars_with_colour($parameter): mixed
+    private function registration_numbers_for_cars_with_colour(array $data): string
     {
-        if (count($parameter) === 0) {
+        if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
 
-        echo "Slot No. Registration No\n";
-
-        foreach (VehicleModal::Query($parameter, "vehicle_colour") as $value) {
-            echo $value['Registration_Number'];
+        echo "Registration No\n";
+        $result = '';
+        $retrieved = VehicleModal::Query($data);
+        if ($retrieved !== 'None') {
+            foreach ($retrieved as $value) {
+                $result .= $value['registration_number'] . ', ';
+            }
+            return $result . "\n";
         }
+        return "None\n";
 
     }
-    private function slot_numbers_for_cars_with_colour($parameter): mixed
+    private function slot_numbers_for_cars_with_colour(array $data): string
     {
-        if (count($parameter) === 0) {
+        if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
-
-        echo "Slot No. Registration No\n";
-
-        foreach (VehicleModal::Query($parameter, 'vehicle_colour') as $value) {
-            echo $value['Slot_Number'];
+        $result = '';
+        $retrieved = VehicleModal::Query($data);
+        if ($retrieved !== 'None') {
+            foreach ($retrieved as $value) {
+                $result .= $value['slots_id'] . ', ';
+            }
+            return $result . "\n";
         }
-
+        return "None\n";
     }
-    private function slot_number_for_registration_number($parameter): mixed
+    private function slot_number_for_registration_number(array $data): string
     {
 
-        if (count($parameter) === 0) {
+        if (count($data) === 0) {
             return "Error, Please try again.\n";
         }
-        foreach (VehicleModal::Query($parameter, 'registration_number') as $value) {
-            echo $value['Registration_Number'];
+        $retrieved = VehicleModal::Query($data);
+        if ($retrieved !== 'None') {
+            return $retrieved[0]['slots_id'] . "\n";
         }
-
+        return "None\n";
     }
     private function reset(): string
     {

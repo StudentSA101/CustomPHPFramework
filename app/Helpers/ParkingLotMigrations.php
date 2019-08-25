@@ -36,7 +36,6 @@ class ParkingLotMigrations
 
     public static function checkIfParkingSlotsCreated()
     {
-        var_dump(Container::get('database')->exec("SELECT * from 'slots'"));
         $check = Container::get('database')->exec("SELECT * from 'slots'");
         if (!$check && $check !== 0) {
             return false;

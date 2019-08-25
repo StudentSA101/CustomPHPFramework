@@ -2,13 +2,15 @@
 
 namespace App\Repository;
 
-class HandleInput implements GetFileContentsInterface
+use App\Contracts\GetFileContentsInterface;
+
+class GetFileContent implements GetFileContentsInterface
 {
 
-    public function get()
+    public function get(): array
     {
         return preg_split('/\n/', file_get_contents(
-            "/" . trim(__DIR__, 'app/Commands') . "/storage/" . $_SERVER["argv"][1]));
+            "/" . trim(__DIR__, 'app/Repository/app/Commands') . "/storage/" . $_SERVER["argv"][1]));
     }
 
 }

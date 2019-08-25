@@ -208,19 +208,15 @@ class VehicleModal
 
     }
 
-    public static function Query($data, $column)
+    public static function Query($data)
     {
-        if ($data[0] === 'slot_numbers_for_cars_with_colour' || $data[0] === 'slot_number_for_registration_number') {
+        if ($data[0] === 'slot_numbers_for_cars_with_colour') {
             try {
-                $query = "SELECT slots_id FROM vehicles WHERE slots_id IS NOT NULL AND :column = :parameter";
+                $query = "SELECT slots_id FROM vehicles WHERE vehicle_colour = '$data[1]' AND slots_id IS NOT NULL";
                 $statement = Container::get('database')->prepare($query);
-                $statement->bindParam(':column', $column);
-                $statement->bindParam(':parameter', $data[1]);
                 $statement->execute();
                 $retrieved = $statement->fetchAll();
-                if (count($retrieved) > 0) {
-                    $firstOpenSlot = $retrieved[0]['Parking_Slot'];
-                } else {
+                if (count($retrieved) === 0) {
                     return "None";
                 }
                 return $retrieved;
@@ -229,17 +225,29 @@ class VehicleModal
                 die();
             }
         }
-        if ($data[0] === 'registration_numbers_for_cars_with_colour') {
+        if ($data[0] === 'slot_number_for_registration_number') {
             try {
-                $query = "SELECT registration_number FROM vehicles WHERE slots_id IS NOT NULL AND :column = :parameter";
+                $query = "SELECT slots_id FROM vehicles WHERE registration_number = '$data[1]' AND slots_id IS NOT NULL";
                 $statement = Container::get('database')->prepare($query);
-                $statement->bindParam(':column', $column);
-                $statement->bindParam(':column', $data[1]);
                 $statement->execute();
                 $retrieved = $statement->fetchAll();
-                if (count($retrieved) > 0) {
-                    $firstOpenSlot = $retrieved[0]['Parking_Slot'];
-                } else {
+                if (count($retrieved) === 0) {
+                    return "None";
+                }
+                return $retrieved;
+            } catch (PDOException $e) {
+                print "Error!: " . $e->getMessage() . "<br/>";
+                die();
+            }
+
+        }
+        if ($data[0] === 'registration_numbers_for_cars_with_colour') {
+            try {
+                $query = "SELECT registration_number FROM vehicles WHERE slots_id IS NOT NULL AND vehicle_colour = '$data[1]'";
+                $statement = Container::get('database')->prepare($query);
+                $statement->execute();
+                $retrieved = $statement->fetchAll();
+                if (count($retrieved) === 0) {
                     return "None";
                 }
                 return $retrieved;

@@ -23,14 +23,17 @@ class AutomatedCommand
         if (count($_SERVER["argv"]) > 2) {
             throw new \Exception('Sorry, please enter only one input file');
         }
+        echo "\nWelcome to the Parking Lot Terminal\n\n";
 
-        foreach ($this->file->get() as $parameter) {
-            print_r($handle->determine($parameter[0], $parameter[1]));
-        }
+        foreach ($this->file->get() as $parameters) {
 
-        if (!$test) {
-            print_r(trim("There are " . $_SERVER["argc"] . " arguments"));
-            print_r($_SERVER["argv"]);
+            $input = lcfirst(trim(preg_replace('/\n/', '', $parameters)));
+            $parameters = preg_split('/\s/', $parameters);
+            if (count($parameters) > 1) {
+                echo $this->handle->determine($parameters[0], $parameters);
+            } else if (count($parameters) === 1) {
+                echo $this->handle->determine($input, []);
+            }
         }
     }
 }

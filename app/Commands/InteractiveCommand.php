@@ -15,12 +15,21 @@ class InteractiveCommand
      * @var HandleCommandDataInterface
      */
     private $handle;
-
+    /**
+     * Inject dependencies into object
+     *
+     * @param HandleCommandDataInterface $handle
+     */
     public function __construct(HandleCommandDataInterface $handle)
     {
         $this->handle = $handle;
     }
-
+    /**
+     * method to initiate the command
+     *
+     * @param boolean $test
+     * @return void
+     */
     public function run(bool $test = false): void
     {
         echo "\nWelcome to the Parking Lot Terminal\n\n";

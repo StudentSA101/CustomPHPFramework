@@ -9,12 +9,27 @@ use App\Contracts\HandleCommandDataInterface;
  */
 class TestCommand
 {
+    /**
+     * Datahandler
+     *
+     * @var HandleCommandDataInterface
+     */
     private $handle;
-
+    /**
+     * Inject dependecies
+     *
+     * @param HandleCommandDataInterface $handle
+     */
     public function __construct(HandleCommandDataInterface $handle)
     {
         $this->handle = $handle;
     }
+    /**
+     * Initiate the commands
+     *
+     * @param [type] $input
+     * @return void
+     */
     public function run($input)
     {
         $input = lcfirst(trim(preg_replace('/\n/', '', $input)));

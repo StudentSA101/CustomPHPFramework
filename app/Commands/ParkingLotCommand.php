@@ -12,7 +12,11 @@ use App\Repository\HandleInput;
  */
 class ParkingLotCommand
 {
-
+    /**
+     * Method to initiate the command
+     *
+     * @return void
+     */
     public function run(): void
     {
         echo shell_exec('vendor/bin/phpunit tests/*');

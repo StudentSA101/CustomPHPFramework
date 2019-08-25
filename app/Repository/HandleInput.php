@@ -37,11 +37,15 @@ class HandleInput implements HandleCommandDataInterface
     }
     private function park(array $data): string
     {
-        if (count($data) === 0) {
+        if (count($data) < 3) {
             return "Error, Please try again.\n";
         }
+        $result = VehicleModal::create($data[1], $data[2]);
+        if ($result !== "This is an existing vehicle!") {
+            return "Allocated slot number: " . VehicleModal::create($data[1], $data[2]) . "\n";
+        }
+        return "Allocated slot number: " . VehicleModal::update($data[1], $data[2]) . "\n";
 
-        return "Allocated slot number: " . VehicleModal::create($data[1], $data[2]) . "\n";
     }
     private function leave(array $data): string
     {
@@ -50,8 +54,7 @@ class HandleInput implements HandleCommandDataInterface
         }
         $response = VehicleModal::delete($data[1]);
         if ($response !== 'Does not exist') {
-            return "Slot number $data[1] is free" . VehicleModal::delete($data[1]) . "\n";
-
+            return "Slot number $response is free\n";
         }
         return "The slot number does not exist!\n";
     }

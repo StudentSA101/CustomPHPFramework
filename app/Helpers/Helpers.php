@@ -1,19 +1,19 @@
-<?php 
+<?php
 
 namespace App\Helpers;
 
-class Helpers {
+class Helpers
+{
 
-    public static function view($name, $data = []) 
+    public static function view($name, $data = [])
     {
         extract($data);
-    
-        return require '../resources/views/'.$name.'.view.php';
+
+        return require __DIR__ . './../Resources/views/' . $name . '.view.php';
     }
-    
-    public static function redirect($path) 
+
+    public static function redirect($path)
     {
         header("Location: /{$path}");
     }
 }
-

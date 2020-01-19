@@ -1,0 +1,24 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Access point to project using the Terminal
+ */
+
+error_reporting(E_ALL);
+
+ini_set('display_errors', 1);
+
+require __DIR__ . '/vendor/autoload.php';
+
+require_once __DIR__ . '/core/database/Connection.php';
+
+require_once __DIR__ . '/Config.php';
+
+require __DIR__ . '/core/Container.php';
+
+Container::bind('database', (new Connection(Config::sqlite()))->connect());
+
+use App\Commands\ParkingLotCommand;
+
+(new ParkingLotCommand())->run();
